@@ -10,7 +10,7 @@ const ExpressError = require("./utils/ExpressError.js");
 const { listingSchema } = require("./schema.js")
 
 const app = express();
-const MONGO_URL = "mongodb://127.0.0.1:27017/WanderLust"
+const MONGO_URL = "mongodb://127.0.0.1:27017/SereniStay"
 
 // app.use(cors());
 app.use(express.json())
