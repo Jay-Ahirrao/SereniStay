@@ -8,9 +8,10 @@ const ejsMate = require('ejs-mate');
 const wrapAsync = require("./utils/WrapAsync.js");
 const ExpressError = require("./utils/ExpressError.js");
 const { listingSchema } = require("./schema.js")
+require('dotenv').config();
+
 
 const app = express();
-const MONGO_URL = "mongodb://127.0.0.1:27017/SereniStay"
 
 // app.use(cors());
 app.use(express.json())
@@ -31,7 +32,7 @@ main()
 
 
 async function main() {
-    await mongoose.connect(MONGO_URL);
+    await mongoose.connect(process.env.MONGO_URL);
 }
 
 // Root 
@@ -68,15 +69,10 @@ app.get("/pathlistings", wrapAsync(async (req, res, next) => {
 }))
 
 // Create Route
-app.post("/pathlistings",validateListing, wrapAsync(async (req, res) => {
-    let result = listingSchema.validate(req.body);
-    console.log(result);
-    if (result.error) {
-        throw new ExpressError(400, error);
-    }
+app.post("/pathlistings", validateListing, wrapAsync(async (req, res) => {
     let new_listing = new Listing(req.body.listing);
     await new_listing.save();
-    res.redirect("/pathlistings")
+    res.redirect("/pathlistings");
 }))
 
 // Index Route 
@@ -124,8 +120,8 @@ app.get("/testlisting", (req, res) => {
 });
 
 
-app.listen(8080, '0.0.0.0', () => {
-    console.log("Server is listening to port 8080")
+app.listen(process.env.PORT, '0.0.0.0', () => {
+    console.log(`Server is listening to port ${process.env.PORT}`);
 });
 
 app.all("*", (req, res, next) => {
