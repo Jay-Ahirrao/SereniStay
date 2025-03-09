@@ -105,19 +105,28 @@ app.delete("/pathlistings/:id", wrapAsync(async (req, res) => {
     res.redirect("/pathlistings")
 }))
 
-app.get("/testlisting", (req, res) => {
-    let samplelisting = new Listing({
-        title: "Canaught Palace",
-        description: "most viewed palace",
-        price: 3000,
-        location: "Canaught city , Amritsar",
-        country: "India"
-    });
+//Reviews -----------------------------------------------------------
+//Create Review - POST
 
-    samplelisting.save();
-    console.log("sample was saved");
-    res.send("successfull testing");
-});
+app.post("/pathlistings/:id/reviews", async (req, res) => {
+    
+})
+
+
+
+// app.get("/testlisting", (req, res) => {
+//     let samplelisting = new Listing({
+//         title: "Canaught Palace",
+//         description: "most viewed palace",
+//         price: 3000,
+//         location: "Canaught city , Amritsar",
+//         country: "India"
+//     });
+
+//     samplelisting.save();
+//     console.log("sample was saved");
+//     res.send("successfull testing");
+// });
 
 
 app.listen(process.env.PORT, '0.0.0.0', () => {

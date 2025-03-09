@@ -36,6 +36,25 @@
                     </form>
                 
             </div>
+            <div class="space" style="height: 100px;"></div>
+            <hr/>   
+            <h4>Leave a Review</h4>
+            <form action="/pathlistings/<%=listing_x._id %>/reviews" method="post">
+                <div>
+                    <label class="form-label" for="rating">Rating</label>
+                    <br/>
+                    <input class="form-range w-25" type="range" name="review[rating]" id="rating" min="1" max="5">
+
+                </div>
+                <div>
+                    <label class="form-label" for="comment">Comment</label>
+                    <textarea class="form-control" name="review[comment]" id="comment" rows="10" cols="30"></textarea>
+                </div>  
+                <br>
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </form>    
+
+
 
         </div>
 
