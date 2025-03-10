@@ -39,7 +39,7 @@
             <div class="space" style="height: 100px;"></div>
             <hr/>   
             <h4>Leave a Review</h4>
-            <form action="/pathlistings/<%=listing_x._id %>/reviews" method="post">
+            <form action="/pathlistings/<%=listing_x._id %>/reviews" method="post" class="needs-validation" novalidate>
                 <div>
                     <label class="form-label" for="rating">Rating</label>
                     <br/>
@@ -48,9 +48,10 @@
                 </div>
                 <div>
                     <label class="form-label" for="comment">Comment</label>
-                    <textarea class="form-control" name="review[comment]" id="comment" rows="10" cols="30"></textarea>
+                    <textarea class="form-control" name="review[comment]" id="comment" rows="10" cols="30" required></textarea>
                 </div>  
                 <br>
+                <div class="invalid-feedback">Please enter a valid comment</div>
                 <button class="btn btn-primary" type="submit">Submit</button>
             </form>    
 

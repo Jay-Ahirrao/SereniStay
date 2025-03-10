@@ -8,6 +8,8 @@ const ejsMate = require('ejs-mate');
 const wrapAsync = require("./utils/WrapAsync.js");
 const ExpressError = require("./utils/ExpressError.js");
 const { listingSchema } = require("./schema.js")
+const Review = require("./models/review.js")
+
 require('dotenv').config();
 
 
@@ -106,12 +108,16 @@ app.delete("/pathlistings/:id", wrapAsync(async (req, res) => {
 }))
 
 //Reviews -----------------------------------------------------------
-//Create Review - POST
-
+//Create Review - POST route
 app.post("/pathlistings/:id/reviews", async (req, res) => {
-    
+    let listing = await Listing.findById(req.params.id)
+    let newReview = new Review(req.body.review)
+    listing.reviews.push(newReview)
+    await newReview.save()
+    await listing.save()
+    res.redirect(`/pathlistings/${listing._id}`)
+    console.log("Review created successfully")
 })
-
 
 
 // app.get("/testlisting", (req, res) => {
