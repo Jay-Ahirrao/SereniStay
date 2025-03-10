@@ -5,16 +5,18 @@
         <div class="row">
 
             <div class="col-md-8 col-sm-10 offset-md-2 offset-sm-1">
-                <h3 class="heading"><%= listing_x.title %></h3>
+                <h3 class="heading">
+                    <%= listing_x.title %>
+                </h3>
             </div>
 
-            <div class="col-md-6 col-sm-8 offset-sm-1 offset-md-2">
+            <div class="listing-card card col-md-6 col-sm-8 offset-sm-1 offset-md-2">
 
                 <img class="card-img-top show-img" src="<%= listing_x.image %>" alt="Card image cap">
                 <br><br>
                 <div class="card-body">
                     <p class="card-text">
-                        
+
                         <%= listing_x.description %> <br>
                             &#8377;<%= listing_x.price.toLocaleString("en-IN") %> <br>
                                 <%= listing_x.location %> <br>
@@ -24,36 +26,69 @@
                 </div>
 
             </div>
-            
+
             <div class="btns offset-2 mt-4">
 
-                    <form action="/pathlistings/<%=listing_x._id %>/edit">
-                        <button class="btn edit-del-btn" type="submit">Edit</button>
-                    </form>
-                
-                    <form method="post" action="/pathlistings/<%=listing_x._id %>?_method=DELETE">
-                        <button class="btn edit-del-btn" style="background-color: black !important; color: azure !important;" type="submit">Delete</button>
-                    </form>
-                
+                <form action="/pathlistings/<%=listing_x._id %>/edit">
+                    <button class="btn edit-del-btn" type="submit">Edit</button>
+                </form>
+
+                <form method="post" action="/pathlistings/<%=listing_x._id %>?_method=DELETE">
+                    <button class="btn edit-del-btn"
+                        style="background-color: black !important; color: azure !important;"
+                        type="submit">Delete</button>
+                </form>
+
             </div>
             <div class="space" style="height: 100px;"></div>
-            <hr/>   
+            <hr />
             <h4>Leave a Review</h4>
             <form action="/pathlistings/<%=listing_x._id %>/reviews" method="post" class="needs-validation" novalidate>
                 <div>
                     <label class="form-label" for="rating">Rating</label>
-                    <br/>
+                    <br />
                     <input class="form-range w-25" type="range" name="review[rating]" id="rating" min="1" max="5">
 
                 </div>
                 <div>
                     <label class="form-label" for="comment">Comment</label>
-                    <textarea class="form-control" name="review[comment]" id="comment" rows="10" cols="30" required></textarea>
-                </div>  
+                    <textarea style="field-sizing: content;" class="form-control" name="review[comment]" id="comment" rows="10" cols="30"
+                        required></textarea>
+                    <div class="invalid-feedback">Please enter a valid comment</div>
+                </div>
                 <br>
-                <div class="invalid-feedback">Please enter a valid comment</div>
                 <button class="btn btn-primary" type="submit">Submit</button>
-            </form>    
+                <br>
+                <br>
+                <hr />
+                <br>
+                <h4>All Reviews</h4>
+                <br>
+
+                <div class="row">
+                    <% for (review of listing_x.reviews) { %>
+                        <div class="card col-5 ms-3 mb-3 p-3" style="border: 1px solid rgb(134, 134, 134);">
+                            <div class="card-body">
+                                <h5 class="card-title">Vikram Rathod </h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Ahemdabad</h6>
+                                <p class="card-text">
+                                    <%= review.comment %>.
+                                </p>
+                                <p>
+                                    <%= review.rating %> ★
+                                </p>
+                            </div>
+                            <form method="post" action="/pathlistings/<%= listing_x._id %>/reviews/<%= review._id%>?_method=DELETE">
+                                <button type="submit" style="max-width: 65px;" class="btn btn-sm btn-dark">Delete</button>
+                            </form>
+                        </div>
+                    <% } %>
+                </div>
+
+                <br><br>
+
+ 
+            </form>
 
 
 

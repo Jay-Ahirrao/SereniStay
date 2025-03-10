@@ -8,6 +8,7 @@ const ejsMate = require('ejs-mate');
 const wrapAsync = require("./utils/WrapAsync.js");
 const ExpressError = require("./utils/ExpressError.js");
 const { listingSchema } = require("./schema.js")
+const { reviewSchema } = require("./schema.js")
 const Review = require("./models/review.js")
 
 require('dotenv').config();
@@ -42,6 +43,8 @@ app.get("/", (req, res) => {
     res.send("Helloww, I am root");
 });
 
+// Validations --------------------
+// 1. listing joi
 const validateListing = (req, res, next) => {
     let { error } = listingSchema.validate(req.body);
 
@@ -52,6 +55,19 @@ const validateListing = (req, res, next) => {
         next();
     }
 }
+//2 . review joi
+const validateReview = (req, res, next) => {
+    let { error } = reviewSchema.validate(req.body);
+
+    if (error) {
+        let errMsg = error.details.map((el) => el.message).join(",");
+        throw new ExpressError(400, errMsg);
+    } else {
+        next();
+    }
+}
+
+
 
 // New Route
 app.get("/pathlistings/new", wrapAsync((req, res) => {
@@ -80,7 +96,7 @@ app.post("/pathlistings", validateListing, wrapAsync(async (req, res) => {
 // Index Route 
 app.get("/pathlistings/:id", wrapAsync(async (req, res) => {
     let { id } = req.params;
-    const listing_x = await Listing.findById(id)
+    const listing_x = await Listing.findById(id).populate("reviews");
     res.render("listings/show.ejs", { listing_x });
 }))
 
@@ -107,9 +123,10 @@ app.delete("/pathlistings/:id", wrapAsync(async (req, res) => {
     res.redirect("/pathlistings")
 }))
 
+
 //Reviews -----------------------------------------------------------
 //Create Review - POST route
-app.post("/pathlistings/:id/reviews", async (req, res) => {
+app.post("/pathlistings/:id/reviews", validateReview, wrapAsync( async (req, res) => {
     let listing = await Listing.findById(req.params.id)
     let newReview = new Review(req.body.review)
     listing.reviews.push(newReview)
@@ -117,8 +134,17 @@ app.post("/pathlistings/:id/reviews", async (req, res) => {
     await listing.save()
     res.redirect(`/pathlistings/${listing._id}`)
     console.log("Review created successfully")
-})
+}))
 
+// Delete Review Route
+app.delete("/pathlistings/:id/reviews/:reviewId" , wrapAsync( async(req,res) => {
+    let { id, reviewId } = req.params;
+
+    await Listing.findByIdAndUpdate(id , {$pull: {reviews: reviewId}})
+    await Review.findByIdAndDelete(reviewId);
+
+    res.redirect(`/pathlistings/${id}`)
+}))
 
 // app.get("/testlisting", (req, res) => {
 //     let samplelisting = new Listing({
