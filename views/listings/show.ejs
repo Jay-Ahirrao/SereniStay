@@ -16,11 +16,14 @@
                 <br><br>
                 <div class="card-body">
                     <p class="card-text">
+                        <br>
+                        <strong>
+                            <%= listing_x.description %>
+                        </strong> <br>
 
-                        <%= listing_x.description %> <br>
-                            &#8377;<%= listing_x.price.toLocaleString("en-IN") %> <br>
-                                <%= listing_x.location %> <br>
-                                    <%= listing_x.country %>
+                        &#8377;<%= listing_x.price.toLocaleString("en-IN") %> <br>
+                        <%= listing_x.location %> <br>
+                        <%= listing_x.country %>
 
                     </p>
                 </div>
@@ -40,10 +43,12 @@
                 </form>
 
             </div>
-            <div class="space" style="height: 100px;"></div>
+            <div class="space" style="height: 80px;"></div>
             <hr />
             <h4>Leave a Review</h4>
+
             <form action="/pathlistings/<%=listing_x._id %>/reviews" method="post" class="needs-validation" novalidate>
+                <br>
                 <div>
                     <label class="form-label" for="rating">Rating</label>
                     <br />
@@ -52,8 +57,8 @@
                 </div>
                 <div>
                     <label class="form-label" for="comment">Comment</label>
-                    <textarea style="field-sizing: content;" class="form-control" name="review[comment]" id="comment" rows="10" cols="30"
-                        required></textarea>
+                    <textarea style="field-sizing: content;" class="form-control" name="review[comment]" id="comment"
+                        rows="10" cols="30" required></textarea>
                     <div class="invalid-feedback">Please enter a valid comment</div>
                 </div>
                 <br>
@@ -78,16 +83,18 @@
                                     <%= review.rating %> ★
                                 </p>
                             </div>
-                            <form method="post" action="/pathlistings/<%= listing_x._id %>/reviews/<%= review._id%>?_method=DELETE">
-                                <button type="submit" style="max-width: 65px;" class="btn btn-sm btn-dark">Delete</button>
+                            <form method="post"
+                                action="/pathlistings/<%= listing_x._id %>/reviews/<%= review._id%>?_method=DELETE">
+                                <button type="submit" style="max-width: 65px;"
+                                    class="btn btn-sm btn-dark">Delete</button>
                             </form>
                         </div>
-                    <% } %>
+                        <% } %>
                 </div>
 
                 <br><br>
 
- 
+
             </form>
 
 
