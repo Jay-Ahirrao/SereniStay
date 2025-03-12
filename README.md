@@ -63,6 +63,4 @@ The application will be available at `http://localhost:8080`
 Make sure MongoDB is running locally at:
 mongodb://127.0.0.1:27017/SereniStay
 
-## Review Branch is Being added Now ...
-I will be adding a review branch and afterwards it'll be merged ..
-Selected for Hackathon ..
+-Review Sectoion is created and now it also has a UI
