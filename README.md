@@ -1,6 +1,6 @@
-# WanderLust
+# SereniStay
 
-WanderLust is a web application for managing and browsing accommodation listings. Users can create, view, edit, and delete property listings.
+SereniStay is a web application for managing and browsing accommodation listings. Users can create, view, edit, and delete property listings.
 
 ## Features
 
