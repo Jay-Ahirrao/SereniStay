@@ -63,4 +63,4 @@ The application will be available at `http://localhost:8080`
 Make sure MongoDB is running locally at:
 mongodb://127.0.0.1:27017/SereniStay
 
--Review Sectoion is created and now it also has a UI, adding a landing page .
+-Review Sectoion is created and now it also has a UI, adding a landing page . 
