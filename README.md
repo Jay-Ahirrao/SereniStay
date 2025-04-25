@@ -64,3 +64,5 @@ Make sure MongoDB is running locally at:
 mongodb://127.0.0.1:27017/SereniStay
 
 -Review Section is created and now it also has a UI, adding a landing page . 
+## To-Dos
+want to change the localhost to "black-flash" pc hostname ...
