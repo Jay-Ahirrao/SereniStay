@@ -67,3 +67,4 @@ mongodb://127.0.0.1:27017/SereniStay
 ## To-Dos
 want to change the localhost to "black-flash" pc hostname ...
 change colors
+maybe make a ppt presentation mordern
