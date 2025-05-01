@@ -68,4 +68,4 @@ mongodb://127.0.0.1:27017/SereniStay
 want to change the localhost to "black-flash" pc hostname ...
 change colors
 
-learn kotlin app d4v
+learn kotlin app dev
