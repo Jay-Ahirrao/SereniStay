@@ -69,3 +69,4 @@ want to change the localhost to "black-flash" pc hostname ...
 change colors
 
 learn kotlin app dev
+ai devlopement using python , ml models
