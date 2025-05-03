@@ -70,3 +70,4 @@ change colors
 
 learn kotlin app dev
 ai devlopement using python , ml models
+some yt stuff maybe
