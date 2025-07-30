@@ -4,6 +4,7 @@ const path = require('path');
 const methodOverride = require('method-override');
 const ejsMate = require('ejs-mate');
 const ExpressError = require("./utils/ExpressError.js");
+const populatingDBAtFirst = require("./init/index.js");
 
 const listings = require("./routes/listing.js");
 const reviews = require("./routes/review.js");
@@ -32,6 +33,7 @@ main()
 
 async function main() {
     await mongoose.connect(process.env.MONGO_URL);
+    populatingDBAtFirst();
 }
 
 // Root 

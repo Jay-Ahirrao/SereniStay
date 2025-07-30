@@ -29,7 +29,7 @@ router.get("/new", wrapAsync((req, res) => {
 // Show Route
 router.get("", wrapAsync(async (req, res, next) => {
     try {
-        console.log("Views directory:", router.get("views"));
+        // console.log("Views directory:", router.get("views"));
         const allListings = await Listing.find({});
         res.render("listings/index", { allListings })
     } catch (error) {

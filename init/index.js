@@ -4,25 +4,28 @@ const data = require("./data.js");
 require('dotenv').config();
 
 // Use environment variable for MongoDB connection
-const MONGO_URL = process.env.MONGO_URL || "mongodb://127.0.0.1:27017/SereniStay";
+const MONGO_URL = process.env.MONGO_URL ;
 
-main()
-    .then(() => {
-        console.log("Connected to DB in index.js");
-    })
-    .catch((err) => {
-        console.log(err);
-    });
+// main()
+//     .then(() => {
+//         console.log("Connected to DB in index.js");
+//     })
+//     .catch((err) => {
+//         console.log(err);
+//     });
 
-async function main() {
+
+async function populatingDBAtFirst() {
     await mongoose.connect(MONGO_URL);
-    initDB();
-}
-
-const initDB = async () => {
-    await Listing.deleteMany({});
+    const isdata = await Listing.find();
+    if(isdata.length > 0) {
+        console.log("Database already initialized with data.");
+        return;
+    }   
+    // await Listing.deleteMany({});
+    console.log(data);
     await Listing.insertMany(data);
     console.log("Data was initialised");
-    
-}
 
+}
+module.exports = populatingDBAtFirst;
