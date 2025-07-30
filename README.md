@@ -72,4 +72,3 @@ learn kotlin app dev
 ai devlopement using python , ml models
 some yt stuff maybe
 laptop tips - can you prioratixze gpu over cpu, ? maybe go for , amd ones
-updated
