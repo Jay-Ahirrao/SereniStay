@@ -38,8 +38,9 @@ async function main() {
 
 // Root 
 app.get("/", (req, res) => {
-    res.send("Helloww, I am root");
+    res.render("home");
 });
+
 
 
 app.use("/pathlistings", listings);

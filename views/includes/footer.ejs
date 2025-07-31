@@ -1,14 +1,110 @@
-<footer>
-    <div class="f-info">
-        <div class="f-info-socials">
-            <i class="fa-brands fa-square-facebook"></i>
-            <i class="fa-brands fa-square-instagram"></i>
-            <i class="fa-brands fa-linkedin"></i>
-        </div>
-        <div class="f-info-copy"> &copy; SereniStays Private Limited <span>@ Jay</span></div>
-        <div class="f-info-links">
-            <a href="/privacy">Privacy</a>
-            <a href="/terms">Terms</a>
-        </div>
+<footer class="sereni-footer">
+  <svg class="footer-wave" viewBox="0 0 1200 100" preserveAspectRatio="none">
+    <path d="M0,0 C300,100 900,0 1200,100 L1200,0 L0,0 Z" fill="#5ee7df" opacity="0.85"/>
+    <path d="M0,0 C400,115 900,35 1200,100 L1200,0 L0,0 Z" fill="#b490ca" opacity="0.7"/>
+  </svg>
+  <div class="footer-main">
+    <div class="footer-socials">
+      <a href="https://www.facebook.com/jay.ahirrao.547/" class="glow"><i class="fa-brands fa-square-facebook"></i></a>
+      <a href="" class="glow"><i class="fa-brands fa-square-instagram"></i></a>
+      <a href="#" class="glow"><i class="fa-brands fa-linkedin"></i></a>
     </div>
+    <div class="footer-brand">
+      <span class="brand-highlight">SereniStay</span> Private Limited <span class="footer-by">@ Jay</span>
+    </div>
+    <div class="footer-links">
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+    </div>
+  </div>
 </footer>
+
+<style>
+    .sereni-footer {
+  position: relative;
+  background: linear-gradient(90deg,#5ee7df 20%,#b490ca 100%);
+  color: #fff;
+  padding: 0 0 36px 0;
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+  box-shadow: 0 -6px 34px -18px #a18cd17a;
+  margin-top: 60px;
+  overflow: hidden;
+}
+.footer-wave {
+  display: block;
+  width: 100%;
+  height: 65px;
+  position: absolute;
+  top: -1px;
+  left: 0;
+  z-index: 0;
+}
+.footer-main {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 60px 2vw 0 2vw;
+  z-index: 2;
+}
+.footer-socials a {
+  font-size: 2.1rem;
+  margin-right: 24px;
+  color: #fff;
+  transition: color 0.3s, filter 0.3s, text-shadow 0.3s;
+  filter: drop-shadow(0 0 4px #b490ca88) drop-shadow(0 0 2px #fff2);
+}
+.footer-socials a:last-child {margin-right:0;}
+.footer-socials a.glow:hover {
+  color:#fff;
+  text-shadow:0 0 12px #5ee7df, 0 0 18px #b490ca;
+  filter: drop-shadow(0 0 10px #fff6);
+  transform: scale(1.18) rotate(-3deg);
+}
+.footer-brand {
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: .5px;
+  text-align: center;
+  margin: 15px 0;
+}
+.brand-highlight {
+  font-family: 'Pacifico', cursive;
+  font-size: 2rem;
+  color: #fff;
+  background: linear-gradient(90deg,#24243e 20%,#b490ca 100%);
+  padding: 0 14px;
+  border-radius: 9px;
+  letter-spacing: 2px;
+  margin-right:4px;
+  box-shadow: 0 2px 14px -7px #b490ca54;
+}
+.footer-by {
+  opacity: 0.75;
+  font-size:1rem;
+  font-style: italic;
+  margin-left: 3px;
+}
+.footer-links a {
+  color: #fff;
+  margin-right: 21px;
+  text-decoration: none;
+  border-bottom: 1.5px solid transparent;
+  transition: all 0.2s;
+  font-weight: 500;
+  font-size: 1.08rem;
+}
+.footer-links a:last-child{margin-right:0;}
+.footer-links a:hover {
+  border-bottom: 2.5px solid #fff;
+  color: #222644;
+}
+@media (max-width: 770px) {
+  .footer-main {flex-direction: column; text-align:center;}
+  .footer-links, .footer-socials {margin:12px 0;}
+}
+
+</style>
