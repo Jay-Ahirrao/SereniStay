@@ -5,6 +5,7 @@ const ExpressError = require("../utils/ExpressError.js");
 const { reviewSchema } = require("../schema.js");
 const Review = require("../models/review.js");
 const Listing = require("../models/listing.js");
+const { requireAuth } = require("../utils/auth.js");
 
 //2 . review joi (JAY :) )
 const validateReview = (req, res, next) => {
@@ -18,10 +19,10 @@ const validateReview = (req, res, next) => {
     }
 }
 
-//Reviews ------------------------------------------------------------------------------------------------------made  with passion by------------ jay---
+//Reviews ---------------------------------------------------------------------------------------------------------------made  with passion by------------ jay---
 
 //Create Review - POST route
-router.post("/", validateReview, wrapAsync(async (req, res) => {
+router.post("/", requireAuth, validateReview, wrapAsync(async (req, res) => {
     let listing = await Listing.findById(req.params.id);
     if (!listing) {
         throw new ExpressError(404, "Listing not found");
