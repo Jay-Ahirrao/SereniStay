@@ -64,11 +64,8 @@ Make sure MongoDB is running locally at:
 mongodb://127.0.0.1:27017/SereniStay
 
 -Review Section is created and now it also has a UI, adding a landing page . 
-## To-Dos
-want to change the localhost to "black-flash" pc hostname ...
-change colors
 
-learn kotlin app dev
-ai devlopement using python , ml models
-some yt stuff maybe
-laptop tips - can you prioratixze gpu over cpu, ? maybe go for , amd ones
+## To-Dos
+1. adding RBAC
+2. Adding JWT login
+3. adding map and payment integration
